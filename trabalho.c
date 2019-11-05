@@ -4,7 +4,7 @@
 #include<string.h>
 #define limite_alunos 20
 
-struct aluno
+struct cadastro
 {
     int id, nsc;
     double cpf;
@@ -60,7 +60,7 @@ int menu()
 
 int cadastro()
 {
-    aluno.id[i];
+    aluno.id;
 
     printf("\nAluno de id %d", aluno.id);
     printf("\nInsira o nome do aluno:");
