@@ -11,13 +11,26 @@ struct cadastro
     char nome[50];
 } aluno;
 
+int op;
+
+int mostra_menu()
+{
+        printf("\n");
+        printf("\t======================\n");
+        printf("\t|\t                   |\n");
+        printf("\t| 1 - Cadastrar Aluno |\n");
+        printf("\t| 2 - Listar Clientes |\n");
+        printf("\t| 3 - Pesquisar Aluno |\n");
+        printf("\t| 4 - Atualizar Cadastro |\n");
+        printf("\t| 5 - Remover Cadastro |\n");
+        printf("\t| 6 - Finalizar programa");
+}
 
 int menu()
 {
-    int op;
-
     while (op != 6)
     {
+        mostra_menu();
         scanf("%d",&op);
 
         switch (op)
