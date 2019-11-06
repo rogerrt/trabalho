@@ -4,28 +4,35 @@
 #include<string.h>
 #define limite_alunos 20
 
+//estrutura que contém os dados do cadastro de cada cliente
 struct cadastro
 {
     int id, nsc;
-    double cpf;
+    char cpf[12];
     char nome[50];
-} aluno;
+};
+
+struct cadastro aluno[limite_alunos];
 
 int op;
+int cont;
 
+//função responsável por mostrar as opções
 int mostra_menu()
 {
         printf("\n");
-        printf("\t======================\n");
-        printf("\t|\t                   |\n");
-        printf("\t| 1 - Cadastrar Aluno |\n");
-        printf("\t| 2 - Listar Clientes |\n");
-        printf("\t| 3 - Pesquisar Aluno |\n");
+        printf("\t==========================\n");
+        printf("\t|\t                 |\n");
+        printf("\t| 1 - Cadastrar Aluno    |\n");
+        printf("\t| 2 - Listar Clientes    |\n");
+        printf("\t| 3 - Pesquisar Aluno    |\n");
         printf("\t| 4 - Atualizar Cadastro |\n");
-        printf("\t| 5 - Remover Cadastro |\n");
-        printf("\t| 6 - Finalizar programa");
+        printf("\t| 5 - Remover Cadastro   |\n");
+        printf("\t| 6 - Finalizar programa |\n");
+        printf("\t==========================\n");
 }
 
+//função responsável pela escolha da opção
 int menu()
 {
     while (op != 6)
@@ -73,24 +80,36 @@ int menu()
 
 int cadastro()
 {
-    aluno.id;
+    aluno[cont].id;
 
-    printf("\nAluno de id %d", aluno.id);
+    printf("\nAluno de id %d", aluno[cont].id);
     printf("\nInsira o nome do aluno:");
-    scanf("%s", aluno.nome);
+    scanf("%s", aluno[cont].nome);
     printf("\nInsira a data de nascimento do aluno:");
-    scanf("%d",&aluno.nsc);
+    scanf("%d",&aluno[cont].nsc);
     printf("\nInsira o cpf do aluno:");
-    scanf("%d",&aluno.cpf);
-
+    scanf("%s", aluno[cont].cpf);
+    cont++;
+    aluno[cont].id++;
 }
 
 int lista()
 {
-    printf("\nDados do aluno: %s %d %d %d", aluno.nome, aluno.cpf, aluno.nsc, aluno.id);
+    int i;
+    printf("\nListando %d alunos cadastrados\n", cont);
+
+    for ( i = 0; i < cont; i++)
+    {
+    printf("\nDados do aluno:");
+    printf("\nID: %d", aluno[i].id);
+    printf("\nNome: %s", aluno[i].nome);
+    printf("\nData de Nascimento: %d",aluno[i].nsc);
+    printf("\nCPF: %s", aluno[i].cpf);
+    }
 }
 
 int main()
 {
+    for (cont = 0; cont <= 20;)
     menu();
 }
