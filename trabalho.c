@@ -3,13 +3,14 @@
 #include<stdio.h>
 #include<string.h>
 #define limite_alunos 20
+#define tam 50
 
 //estrutura que contém os dados do cadastro de cada cliente
 struct cadastro
 {
     int id, nsc;
     char cpf[12];
-    char nome[50];
+    char nome[tam];
 };
 
 struct cadastro aluno[limite_alunos];
@@ -78,13 +79,20 @@ int menu()
     }
 }
 
+int ler_nome()
+{
+    // ja tentei scanf e gets, tenta ai
+    fgets(aluno[cont].nome, tam-1, stdin);
+    getchar();
+}
+
 int cadastro()
 {
     aluno[cont].id;
 
     printf("\nAluno de id %d", aluno[cont].id);
     printf("\nInsira o nome do aluno:");
-    scanf("%s", aluno[cont].nome);
+    ler_nome();
     printf("\nInsira a data de nascimento do aluno:");
     scanf("%d",&aluno[cont].nsc);
     printf("\nInsira o cpf do aluno:");
