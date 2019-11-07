@@ -1,0 +1,102 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#define TAM 20
+
+//Variaveis Globais
+char nome[TAM][50];
+char data[TAM][8];
+int cpf[TAM][11];
+int op;
+int id = 0;
+
+//prototipos
+void cadastro();
+void pesquisa();
+void listar();
+
+int main(void)
+{
+  do
+  {
+   // system("clscr"); //limpar tela, caso seja linux colocar "clear"
+    printf("\n----Cadastro de pessoas----\n1 - Cadastro\n2 - Listar\n3 - Pesquisar\n4 - Atualizar\n5 - Remover\n6 - Sair\n");
+    scanf("%d", &op);
+    switch(op)
+    {
+      case 1:
+        cadastro();
+          break;
+      case 2:
+        listar();
+          break;
+      case 3:
+        pesquisa();
+          break;
+      case 4:
+        //atualizar();
+          break;
+      case 5:
+        //remover();
+          break;
+      case 6:
+        system("exit");
+          break;
+      default:
+        printf("Erro, operação inválida!");
+          break;
+    }    
+  }while(op!=6);
+}
+void cadastro()
+{
+  static int linha;
+  do
+  {
+    printf("\nDigite o nome: ");
+    scanf("%s", &nome[linha]);
+    printf("\nDigite a data de naascimento: ");
+    scanf("%s", &data[linha]);
+    printf("\nDigite o CPF: ");
+    scanf("%d", &cpf[linha]);
+    id++;
+    printf("Digite 1 para inserir outro aluno ou outro valor para sair ");
+    scanf("%d",&op);
+    linha++;
+  }while(op==1);
+}
+
+void listar()
+{
+  int i;
+  for(i = 0; i<TAM; i++)
+  {
+    if(cpf[i]>0)
+    {
+      printf("\nNome: %s \nCPF: %d \nData Nasc: %s", nome[i], cpf[i], data[i]);
+    }
+    else
+    {
+      break;
+    }
+  }
+}
+
+void pesquisa()
+{
+  int nomePesquisa;
+  int i;
+  do
+  {
+    printf("\nDigite o nome do estudante desejado: ");
+    scanf("%s",nomePesquisa);
+    for(i=0; i<TAM; i++)
+    {
+      if(strcmp(nome[i], nomePesquisa))
+      {
+        printf("\nNome: %s \nCPF: %d \nData Nasc: %s", nome[i], cpf[i], data[i]);
+      }
+    }
+
+  }while(op==3);
+}
