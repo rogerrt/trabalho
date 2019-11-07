@@ -31,6 +31,7 @@ int mostra_menu()
         printf("\t| 5 - Remover Cadastro   |\n");
         printf("\t| 6 - Finalizar programa |\n");
         printf("\t==========================\n");
+        printf("\n\tSelecao:  ");
 }
 
 //função responsável pela escolha da opção
@@ -44,7 +45,7 @@ int menu()
         switch (op)
         {
         case 1: {
-            printf("\ncadastro\n");
+            printf("\nVoce selecionou Cadastro\n");
             cadastro();
             break; }
         
@@ -68,9 +69,8 @@ int menu()
             //remover();
             break; }
 
-        case 6:
+        case 6: 
             printf("Finalizando programa");
-            break;
 
         default:
             printf("Operacao invalida");
@@ -83,7 +83,7 @@ int ler_nome()
 {
     // ja tentei scanf e gets, tenta ai
     fgets(aluno[cont].nome, tam-1, stdin);
-    getchar();
+    gets(aluno[cont].nome);
 }
 
 int cadastro()
@@ -91,14 +91,15 @@ int cadastro()
     aluno[cont].id;
 
     printf("\nAluno de id %d", aluno[cont].id);
-    printf("\nInsira o nome do aluno:");
+    printf("\nInsira o nome do aluno: ");
     ler_nome();
     printf("\nInsira a data de nascimento do aluno:");
     scanf("%d",&aluno[cont].nsc);
-    printf("\nInsira o cpf do aluno:");
+    printf("\nInsira o cpf do aluno: ");
     scanf("%s", aluno[cont].cpf);
+    printf("\nCadastro realizado com sucesso\n");
     cont++;
-    aluno[cont].id++;
+    aluno[cont].id = cont;
 }
 
 int lista()
@@ -112,7 +113,7 @@ int lista()
     printf("\nID: %d", aluno[i].id);
     printf("\nNome: %s", aluno[i].nome);
     printf("\nData de Nascimento: %d",aluno[i].nsc);
-    printf("\nCPF: %s", aluno[i].cpf);
+    printf("\nCPF: %s\n", aluno[i].cpf);
     }
 }
 
