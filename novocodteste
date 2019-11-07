@@ -1,3 +1,5 @@
+//Roger Ricardo Tristão
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -6,15 +8,18 @@
 //Variaveis Globais
 char nome[TAM][50];
 char data[TAM][8];
-int cpf[TAM][11];
+int cpf[TAM];
 int op;
-int id = 0;
+int id[TAM];
 
 //prototipos
 void cadastro();
-void pesquisa();
 void listar();
+void pesquisa();
+void atualiza();
+void remover();
 
+//FUNCAO MAIN
 int main(void)
 {
   do
@@ -47,25 +52,30 @@ int main(void)
           break;
     }    
   }while(op!=6);
+
+  return 0;
 }
+
+//FUNCAO CADASTRO
 void cadastro()
 {
   static int linha;
   do
   {
+    printf("\nDigite o ID: ");
+    scanf("%d", &id[linha]);
     printf("\nDigite o nome: ");
     scanf("%s", &nome[linha]);
     printf("\nDigite a data de naascimento: ");
     scanf("%s", &data[linha]);
     printf("\nDigite o CPF: ");
     scanf("%d", &cpf[linha]);
-    id++;
     printf("Digite 1 para inserir outro aluno ou outro valor para sair ");
     scanf("%d",&op);
-    linha++;
   }while(op==1);
 }
 
+//FUNCAO LISTAR
 void listar()
 {
   int i;
@@ -73,7 +83,7 @@ void listar()
   {
     if(cpf[i]>0)
     {
-      printf("\nNome: %s \nCPF: %d \nData Nasc: %s", nome[i], cpf[i], data[i]);
+      printf("\nID: %d \nNome: %s \nCPF: %d \nData Nasc: %s", id[i], nome[i], cpf[i], data[i]);
     }
     else
     {
@@ -82,6 +92,7 @@ void listar()
   }
 }
 
+//FUNCAO PESQUISA
 void pesquisa()
 {
   int nomePesquisa;
@@ -92,11 +103,24 @@ void pesquisa()
     scanf("%s",nomePesquisa);
     for(i=0; i<TAM; i++)
     {
-      if(strcmp(nome[i], nomePesquisa))
+      if(strcmp(nomePesquisa,nome[i]))
       {
-        printf("\nNome: %s \nCPF: %d \nData Nasc: %s", nome[i], cpf[i], data[i]);
+        printf("\nID: %d \nNome: %s \nCPF: %d \nData Nasc: %s", id[i], nome[i], cpf[i], data[i]);
       }
     }
 
   }while(op==3);
 }
+
+//FUNCAO ATUALIZA
+void atualiza()
+{
+
+}
+
+//FUNCAO REMOVER
+void remover()
+{
+
+}
+
