@@ -73,6 +73,7 @@ void cadastro()
     scanf("%d", &cpf[linha]);
     printf("Digite 1 para inserir outro aluno ou outro valor para sair ");
     scanf("%d",&op);
+    linha++;
   }while(op==1);
 }
 
@@ -82,7 +83,7 @@ void listar()
   int i;
   for(i = 0; i<TAM; i++)
   {
-    if(cpf[i]>0)
+    if(id[i]>0)
     {
       printf("\nID: %d \nNome: %s \nCPF: %d \nData Nasc: %s", id[i], nome[i], cpf[i], data[i]);
     }
