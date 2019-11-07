@@ -56,7 +56,7 @@ int menu()
 
         case 3: {
             printf("pesquisa");
-            //pesquisa();
+            pesquisa();
             break; }
 
         case 4: {
@@ -81,9 +81,8 @@ int menu()
 
 int ler_nome()
 {
-    // ja tentei scanf e gets, tenta ai
-    fgets(aluno[cont].nome, tam-1, stdin);
     gets(aluno[cont].nome);
+    fgets(aluno[cont].nome, tam-1, stdin);
 }
 
 int cadastro()
@@ -115,6 +114,30 @@ int lista()
     printf("\nData de Nascimento: %d",aluno[i].nsc);
     printf("\nCPF: %s\n", aluno[i].cpf);
     }
+}
+
+int pesquisa()
+{
+    char pesquisa[tam];
+    int i;
+    while (op == 3)
+    {
+        printf("\nDigite o nome do aluno desejado: ");
+        fgets(pesquisa, tam-1, stdin);
+        gets(pesquisa);
+        
+        for( i=0; i<cont; i++)
+        {
+            if(strcmp(pesquisa, aluno[cont].nome)==0)
+            {
+                printf("\nID: %d", aluno[cont].id); 
+                printf("\nNome: %s" , aluno[cont].nome); 
+                printf("\nCPF: %d", aluno[cont].cpf); 
+                printf("\nData de nascimento: %s", aluno[cont].nsc);
+            }
+        }
+    }
+    
 }
 
 int main()
