@@ -1,5 +1,3 @@
-//Roger Ricardo Tristão
-
 #include<stdio.h>
 #include<string.h>
 #define limite_alunos 20
@@ -126,14 +124,14 @@ int pesquisa()
         fgets(pesquisa, tam-1, stdin);
         gets(pesquisa);
         
-        for( i=0; i<cont; i++)
+        for( i=0; i<tam; i++)
         {
-            if(strcmp(pesquisa, aluno[cont].nome)==0)
+            if(strcmp(pesquisa, aluno[i].nome))
             {
-                printf("\nID: %d", aluno[cont].id); 
-                printf("\nNome: %s" , aluno[cont].nome); 
-                printf("\nCPF: %d", aluno[cont].cpf); 
-                printf("\nData de nascimento: %s", aluno[cont].nsc);
+                printf("\nID: %d", aluno[i].id); 
+                printf("\nNome: %s" , aluno[i].nome); 
+                printf("\nCPF: %d", aluno[i].cpf); 
+                printf("\nData de nascimento: %s", aluno[i].nsc);
             }
         }
     }
