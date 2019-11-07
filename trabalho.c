@@ -148,22 +148,12 @@ int pesquisa()
         
         for( i=0; i<tam; i++)
         {
-
-            if(strcmp(pesquisa, aluno[i].nome)==0)
-            {
-                printf("\nID: %d", aluno[i].id); 
-                printf("\nNome: %s" , aluno[i].nome); 
-                printf("\nCPF: %s\n", aluno[i].cpf); 
-                printf("\nData de nascimento: %d\n", aluno[i].nsc);
-                situacao_aluno();
-
-            if(strcmp(pesquisa, aluno[i].nome)==0)
+            if(strcmp(pesquisa, aluno[i].nome))
             {
                 printf("\nID: %d", aluno[i].id); 
                 printf("\nNome: %s" , aluno[i].nome); 
                 printf("\nCPF: %d", aluno[i].cpf); 
-                printf("\nData de nascimento: %d\n", aluno[i].nsc);
-
+                printf("\nData de nascimento: %s", aluno[i].nsc);
             }
         }
     }
