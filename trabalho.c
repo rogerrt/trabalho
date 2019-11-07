@@ -11,6 +11,7 @@ struct cadastro
     int id, nsc;
     char cpf[12];
     char nome[tam];
+    int situacao;
 };
 
 struct cadastro aluno[limite_alunos];
@@ -79,6 +80,11 @@ int menu()
     }
 }
 
+int mensagem_erro()
+{
+    printf("\n\t## Erro! Entrada de dados invalida! ##\n");
+}
+
 int ler_nome()
 {
     gets(aluno[cont].nome);
@@ -94,11 +100,26 @@ int cadastro()
     ler_nome();
     printf("\nInsira a data de nascimento do aluno:");
     scanf("%d",&aluno[cont].nsc);
+    if(aluno[cont].nsc)
     printf("\nInsira o cpf do aluno: ");
     scanf("%s", aluno[cont].cpf);
     printf("\nCadastro realizado com sucesso\n");
+    aluno[cont].situacao = 1;
     cont++;
     aluno[cont].id = cont;
+}
+
+int situacao_aluno()
+{
+    int i;
+    if( aluno[i].situacao == 1)
+    {
+        printf("\nSituacao do aluno: Ativo\n");
+    }
+    else
+    {
+        printf("\nSituacao do aluno: Inativo\n"); 
+    }
 }
 
 int lista()
@@ -109,10 +130,11 @@ int lista()
     for ( i = 0; i < cont; i++)
     {
     printf("\nDados do aluno:");
-    printf("\nID: %d", aluno[i].id);
+    printf("\nID: %d\n", aluno[i].id);
     printf("\nNome: %s", aluno[i].nome);
-    printf("\nData de Nascimento: %d",aluno[i].nsc);
-    printf("\nCPF: %s\n", aluno[i].cpf);
+    printf("\nData de Nascimento: %d\n",aluno[i].nsc);
+    printf("\nCPF: %s\n\n", aluno[i].cpf);
+    situacao_aluno();
     }
 }
 
@@ -123,17 +145,18 @@ int pesquisa()
     while (op == 3)
     {
         printf("\nDigite o nome do aluno desejado: ");
-        fgets(pesquisa, tam-1, stdin);
         gets(pesquisa);
+        fgets(pesquisa, tam-1, stdin);
         
         for( i=0; i<cont; i++)
         {
-            if(strcmp(pesquisa, aluno[cont].nome)==0)
+            if(strcmp(pesquisa, aluno[i].nome)==0)
             {
-                printf("\nID: %d", aluno[cont].id); 
-                printf("\nNome: %s" , aluno[cont].nome); 
-                printf("\nCPF: %d", aluno[cont].cpf); 
-                printf("\nData de nascimento: %s", aluno[cont].nsc);
+                printf("\nID: %d", aluno[i].id); 
+                printf("\nNome: %s" , aluno[i].nome); 
+                printf("\nCPF: %s\n", aluno[i].cpf); 
+                printf("\nData de nascimento: %d\n", aluno[i].nsc);
+                situacao_aluno();
             }
         }
     }
