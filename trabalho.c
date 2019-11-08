@@ -126,11 +126,14 @@ int lista()
 
     for ( i = 0; i < cont; i++)
     {
-        printf("\nDados do aluno:");
-        printf("\nID: %d\n", aluno[i].id);
-        printf("\nNome: %s", aluno[i].nome);
-        printf("\nData de Nascimento: %d\n",aluno[i].nsc);
-        printf("\nCPF: %s\n\n", aluno[i].cpf);
+        if(aluno[i].situacao==1)
+        {
+            printf("\nDados do aluno:");
+            printf("\nID: %d\n", aluno[i].id);
+            printf("\nNome: %s", aluno[i].nome);
+            printf("\nData de Nascimento: %d\n",aluno[i].nsc);
+            printf("\nCPF: %s\n\n", aluno[i].cpf);
+        }
     }
 }
 
@@ -194,7 +197,7 @@ int Remover()
             aluno[i].nome[0] = '\0';
             aluno[i].nsc = 0;
             aluno[i].cpf[0] = '\0';
-            cont--;
+            aluno[i].situacao = 0;
             printf("\nRemocao de aluno feita com sucesso!\n");
         }
     }       
