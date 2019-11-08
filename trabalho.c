@@ -1,3 +1,6 @@
+//Roger Tristao 1904615 
+//Matheus Todesco 1705926
+
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
