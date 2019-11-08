@@ -7,7 +7,7 @@
 struct cadastro
 {
     int id, nsc;
-    char cpf[12];
+    char cpf[13];
     char nome[tam];
     int situacao;
 };
@@ -60,12 +60,12 @@ int menu()
 
         case 4: {
             printf("atualiza");
-            //atualiza();
+            atualiza();
             break; }
 
         case 5: {
             printf("remove");
-            //remover();
+            Remover();
             break; }
 
         case 6: 
@@ -98,7 +98,6 @@ int cadastro()
     ler_nome();
     printf("\nInsira a data de nascimento do aluno:");
     scanf("%d",&aluno[cont].nsc);
-    if(aluno[cont].nsc)
     printf("\nInsira o cpf do aluno: ");
     scanf("%s", aluno[cont].cpf);
     printf("\nCadastro realizado com sucesso\n");
@@ -127,12 +126,11 @@ int lista()
 
     for ( i = 0; i < cont; i++)
     {
-    printf("\nDados do aluno:");
-    printf("\nID: %d\n", aluno[i].id);
-    printf("\nNome: %s", aluno[i].nome);
-    printf("\nData de Nascimento: %d\n",aluno[i].nsc);
-    printf("\nCPF: %s\n\n", aluno[i].cpf);
-    situacao_aluno();
+        printf("\nDados do aluno:");
+        printf("\nID: %d\n", aluno[i].id);
+        printf("\nNome: %s", aluno[i].nome);
+        printf("\nData de Nascimento: %d\n",aluno[i].nsc);
+        printf("\nCPF: %s\n\n", aluno[i].cpf);
     }
 }
 
@@ -140,28 +138,70 @@ int pesquisa()
 {
     char pesquisa[tam];
     int i;
-    while (op == 3)
-    {
-        printf("\nDigite o nome do aluno desejado: ");
-        gets(pesquisa);
-        fgets(pesquisa, tam-1, stdin);
+
+    printf("\nDigite o nome do aluno desejado: ");
+    gets(pesquisa);
+    fgets(pesquisa, tam-1, stdin);
         
-        for( i=0; i<tam; i++)
+    for( i=0; i<tam; i++)
+    {
+        if(strcmp(pesquisa, aluno[i].nome)==0)
         {
-            if(strcmp(pesquisa, aluno[i].nome))
-            {
-                printf("\nID: %d", aluno[i].id); 
-                printf("\nNome: %s" , aluno[i].nome); 
-                printf("\nCPF: %d", aluno[i].cpf); 
-                printf("\nData de nascimento: %s", aluno[i].nsc);
-            }
+            printf("\nID: %d", aluno[i].id); 
+            printf("\nNome: %s" , aluno[i].nome); 
+            printf("\nCPF: %s\n", aluno[i].cpf); 
+            printf("\nData de nascimento: %d\n\n", aluno[i].nsc);
         }
     }
-    
+}
+
+int atualiza()
+{
+    int pesquisa;
+    int i;
+
+    printf("\nDigite a ID do aluno desejado: ");
+    scanf("%d",&pesquisa);
+
+    for ( i = 0; i < cont; i++)
+    {
+        if( pesquisa == aluno[i].id)
+        {
+            printf("\nDigite o novo nome: ");
+            gets(aluno[i].nome);
+            fgets(aluno[i].nome, tam-1, stdin);
+            printf("\nDigite a nova data de nascimento: ");
+            scanf("%d",&aluno[i].nsc);
+            printf("\nDigite o novo CPF: ");
+            scanf("%s", aluno[i].cpf);
+            printf("\nAtualizacao de dados feita com sucesso!\n");
+        }
+    }       
+}
+
+int Remover()
+{
+    int pesquisa;
+    int i;
+
+    printf("\nDigite a ID do aluno desejado: ");
+    scanf("%d",&pesquisa);
+
+    for ( i = 0; i < cont; i++)
+    {
+        if( pesquisa == aluno[i].id)
+        {
+            aluno[i].nome[0] = '\0';
+            aluno[i].nsc = 0;
+            aluno[i].cpf[0] = '\0';
+            cont--;
+            printf("\nRemocao de aluno feita com sucesso!\n");
+        }
+    }       
 }
 
 int main()
 {
-    for (cont = 0; cont <= 20;)
+    for (cont = 0; cont <= limite_alunos;)
     menu();
 }
